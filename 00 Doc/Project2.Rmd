@@ -1,0 +1,60 @@
+---
+title: "Project 2"
+output: 
+  html_document:
+    theme: cosmo
+Author: "Grayson Gayle, Madeline Nash, David Schluckebier"
+Date: Due October 2, 2015 11:59 pm
+---
+The data used in our project reflects the open, high, low, close, volume and adjusted close prices of Dow Jones stock on various dates. We manipualted this data to visualize the fluctations in Dow Jones stock under various circumstances.
+
+First, we created a dataframe named djdf for Dow Jones Data Frame from the online oracle cloud server using the following code:
+
+```{r}
+
+require("jsonlite")
+require("RCurl")
+require("ggplot2")
+require("ggthemes")
+require("gplots")
+require("grid")
+require("RCurl")
+require("reshape2")
+require("rstudio")
+require("tableplot")
+require("tidyr")
+require("dplyr")
+require("jsonlite")
+require("extrafont")
+require("lubridate")
+
+djdf <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?query="select * from DJIA "'),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/PDBF15DV.usuniversi01134.oraclecloud.internal', USER='cs329e_gmg954', PASS='orcl_gmg954', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
+
+```
+
+
+We then used this data to create the following four data wrangling visualizations:
+
+
+**Figure 1**
+* This data depicts  the cycilical nature of the Dow Jones price score fluctuations in the month of June over a number of years.*
+```{r}
+
+source("/Users/Grayson/Desktop/DataVisualization/Project 2/02 Data Wrangling/DJWrangle.R", echo = TRUE)
+```
+
+**Figure 2**
+*This data shows each of the days values of every day of the year.  We can see where most of the data falls into three categories.  A high, a lower-mid, and a bottom.*
+
+
+**Figure 3**
+*This data distribution is the same as the previous, but segmented just for one month.The distribution is the same.*
+```{r}
+source("/Users/Grayson/Desktop/DataVisualization/Project 2/02 Data Wrangling/DJWrangle3.R", echo = TRUE)
+```
+
+**Figure 4**
+*This data shows the differences of the open and closing amounts, showing how much the Dow changes from the beginning to the end of the day.*
+```{r}
+source("/Users/Grayson/Desktop/DataVisualization/Project 2/02 Data Wrangling/DJWrangle4.R", echo = TRUE)
+```
